@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sach todo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/ytb.css">
+</head>
+
+<body>
+    <h1>Danh sách todo ngày 11/6/2020</h1>
+
+    <form action="/new-todo" method="POST">
+        <input type="text" name="link">
+        <input type="text" name="img">
+        <input type="text" name="title">
+        <input type="number" name="view">
+        <input type="text" name="time">
+        <button type=" submit ">Thêm Video</button>
+    </form>
+
+    <form action="/delete-todo" method="POST">
+        <input type="number" name="id">
+        <button type="submit">Xóa Video</button>
+    </form>
+
+    <form action="/fix-todo" method="POST">
+
+        <input type="text" name="title">
+        <input type="text" name="newtitle">
+        <input type="text" name="newlink">
+        <input type="text" name="newimg">
+        <input type="text" name="newchannel">
+        <input type="number" name="newview">
+        <input type="text" name="newtime">
+        <button type="submit">Fix</button>
+    </form>
+
+    <div class="row">
+        <% for(let i = 0; i < result.length; i++){ %>
+            <div class="col-md-3 ">
+                <iframe width="255 " height="145 " src="<%= result[i].link %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="content">
+                    <div class="icon-avatar">
+                        <img src="<%= result[i].img %>" alt="avatar">
+                    </div>
+                    <div class="text">
+                        <h2>
+                            <%= result[i].title %>
+                        </h2>
+                        <span class="verified"></span><br>
+                        <p><span><%= result[i].channel %></span></p> 
+                        <p><span><%= result[i].view %></span></p> 
+                        <span><%= result[i].time %></span>
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
